@@ -10,12 +10,17 @@ import time
 from dice import Dice
 from typing import List, Protocol
 
-
+"""
+Es una superclase abstracta
+"""
 class Observer(Protocol):
     def __call__(self) -> None:
         ...
 
-
+"""
+Clase que define como instancia _observers y 3 metodos: attach(), detach() y
+_notify_observers(), el _notify_observers() es usada cuando hay un cambio de estado. 
+"""
 class Observable:
     def __init__(self) -> None:
         self._observers: list[Observer] = []
@@ -33,7 +38,10 @@ class Observable:
 
 Hand = List[int]
 
-
+"""
+Se hace uso del método heredado _notify_observers() para notificar de cambios
+importantes a todos los observers.
+"""
 class ZonkHandHistory(Observable):
     def __init__(self, player: str, dice_set: Dice) -> None:
         super().__init__()
@@ -53,7 +61,9 @@ class ZonkHandHistory(Observable):
         self._notify_observers()  # State change
         return self.dice_set.dice
 
-
+"""
+Al llamar el observer se escribirá lo que está en el print()
+"""
 class SaveZonkHand(Observer):
     def __init__(self, hand: ZonkHandHistory) -> None:
         self.hand = hand
@@ -69,7 +79,9 @@ class SaveZonkHand(Observer):
         }
         print(f"SaveZonkHand {message}")
 
+"""
 
+"""
 class ThreePairZonkHand:
     """Observer of ZonkHandHistory"""
 

@@ -4,7 +4,7 @@ class otrosparqueaderos(abc.ABC):
     def informacion():
         ...
     @abc.abstractmethod
-    def Acceptacion():
+    def AcceptingCars():
         ...
 
 class parqueadero():
@@ -21,11 +21,11 @@ class parqueadero():
     
     def entradaparqueadero(self, data):
         if (data.self.llegada > 6 and data.self.llegada < 18):
-            self.Acceptacion()
+            self.AcceptingCars()
         else:
             print("Parqueadero cerrado")
     
-    def Acceptacion(self, data):               
+    def AcceptingCars(self, data):               
             pass
 
 class vehiculo(abc.ABC):
