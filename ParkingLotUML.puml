@@ -1,0 +1,33 @@
+@startuml
+
+
+abstract Class otrosparqueaderos{
+informacion()
+AcceptingCars()
+}
+
+
+Class parqueadero{
+spacescompac:int
+spacesSUV:int
+spacesvan:int
+
+informacion()
+entradaparqueadero()
+Acceptacion()
+}
+abstract Class vehiculos{
+CargaPago()
+}
+Class Vehiculo{
+tipo
+horas
+llegada
+pago
+CargaPago()
+}
+
+parqueadero --* Vehiculo
+otrosparqueaderos <|- parqueadero
+vehiculos <|- Vehiculo
+@enduml
